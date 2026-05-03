@@ -2,219 +2,183 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ludo Cash King</title>
+<title>Ludo Cash King | Gaming Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: white;
-}
+  :root {
+    --gold: linear-gradient(180deg, #FFD700 0%, #B8860B 100%);
+    --blue: linear-gradient(180deg, #00d2ff 0%, #3a7bd5 100%);
+    --purple: linear-gradient(180deg, #9d50bb 0%, #6e48aa 100%);
+    --red: linear-gradient(180deg, #ff4b2b 0%, #ff416c 100%);
+    --green: linear-gradient(180deg, #11998e 0%, #38ef7d 100%);
+  }
 
-/* HEADER */
-.header {
-  text-align: center;
-  padding: 15px;
-}
-.logo {
-  font-size: 45px;
-  color: gold;
-  animation: glow 1.5s infinite alternate;
-}
-.title {
-  font-size: 22px;
-  font-weight: bold;
-  color: gold;
-}
-@keyframes glow {
-  from { text-shadow: 0 0 10px gold; }
-  to { text-shadow: 0 0 25px orange; }
-}
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0b0e21; /* Dark Gaming Theme */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    direction: ltr;
+  }
 
-/* PROFILE */
-.profile {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  margin: 10px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-}
+  /* Top Bar like Ludo Star */
+  .top-bar {
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    align-items: center;
+    border-bottom: 2px solid #FFD700;
+  }
 
-/* GAME CARDS */
-.card {
-  margin: 12px;
-  padding: 15px;
-  border-radius: 15px;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
-}
+  .currency-box {
+    background: #000;
+    border: 1.5px solid #FFD700;
+    border-radius: 20px;
+    padding: 2px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 90px;
+  }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
+  /* Main Menu Buttons Grid */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px;
+    flex-grow: 1;
+    align-content: center;
+  }
 
-/* GAME BOX */
-.game-box {
-  background: linear-gradient(135deg, #141E30, #243B55);
-  border-radius: 15px;
-  padding: 15px;
-  text-align: center;
-  transition: 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.game-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #00c6ff;
-}
+  /* The 3D Gaming Button style from your images */
+  .game-btn {
+    aspect-ratio: 1/1;
+    border: none;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 0px rgba(0,0,0,0.4);
+    transition: 0.1s;
+  }
 
-/* ICON */
-.icon {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
+  .game-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0px rgba(0,0,0,0.4);
+  }
 
-/* BUTTON */
-.play-btn {
-  margin-top: 10px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 20px;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
-  color: white;
-  cursor: pointer;
-}
+  .btn-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+  }
 
-/* DAILY TASK */
-.task {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  margin-top: 8px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-}
+  .btn-label {
+    font-weight: 900;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+  }
 
-.collect {
-  background: gold;
-  color: black;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 10px;
-}
+  /* Specific Button Colors */
+  .online { background: var(--green); border: 3px solid #1ef09c; }
+  .friends { background: var(--purple); border: 3px solid #c078f1; }
+  .computer { background: var(--blue); border: 3px solid #71d9ff; }
+  .local { background: var(--red); border: 3px solid #ff7e67; }
 
-/* FOOTER */
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: black;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-}
-.footer div {
-  text-align: center;
-  font-size: 14px;
-}
+  /* Bottom Navigation */
+  .bottom-nav {
+    background: linear-gradient(0deg, #000 0%, #1a1a2e 100%);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 2px solid #FFD700;
+  }
+
+  .nav-item {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  .nav-item.active { color: #FFD700; }
+  .nav-item i { font-size: 22px; display: block; margin-bottom: 2px; }
+
+  /* Center Logo Area */
+  .logo-area {
+    text-align: center;
+    padding: 10px;
+  }
+  .logo-area h1 {
+    margin: 0;
+    font-size: 28px;
+    color: gold;
+    text-shadow: 0 0 10px gold;
+  }
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="logo">👑</div>
-  <div class="title">LUDO CASH KING</div>
-</div>
-
-<!-- PROFILE -->
-<div class="profile">
-  <div>
-    Usman Ahmad<br>Level 12
-  </div>
-  <div>
-    💰 PKR 2540<br>🪙 15680
-  </div>
-</div>
-
-<!-- GAME SECTION -->
-<div class="card">
-  <h3>🎮 Play Game</h3>
-
-  <div class="grid">
-
-    <div class="game-box">
-      <div class="icon">🎲</div>
-      <div>Quick Match</div>
-      <button class="play-btn" onclick="play('Quick Match')">Play</button>
+<div class="top-bar">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <div style="width: 45px; height: 45px; border: 2px solid gold; border-radius: 10px; overflow: hidden;">
+      <img src="https://ui-avatars.com/api/?name=Ahmad&background=FFD700" width="100%">
     </div>
-
-    <div class="game-box">
-      <div class="icon">🎯</div>
-      <div>Create Room</div>
-      <button class="play-btn" onclick="play('Create Room')">Play</button>
-    </div>
-
-    <div class="game-box">
-      <div class="icon">👥</div>
-      <div>4 Player</div>
-      <button class="play-btn" onclick="play('4 Player')">Play</button>
-    </div>
-
-    <div class="game-box">
-      <div class="icon">🏆</div>
-      <div>Tournament</div>
-      <button class="play-btn" onclick="play('Tournament')">Play</button>
-    </div>
-
+    <div style="font-size: 12px;"><b>Usman Ahmad</b><br>Lv. 12</div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 5px;">
+    <div class="currency-box">🪙 <span style="color: gold;">15,680</span></div>
+    <div class="currency-box">💎 <span style="color: #00d2ff;">1,250</span></div>
   </div>
 </div>
 
-<!-- DAILY TASK -->
-<div class="card">
-  <h3>🎯 Daily Tasks</h3>
+<div class="logo-area">
+  <h1>LUDO CASH KING</h1>
+</div>
 
-  <div class="task">
-    <span>Play 1 Game</span>
-    <button class="collect" onclick="reward()">+10</button>
-  </div>
+<div class="menu-grid">
+  
+  <button class="game-btn online" onclick="alert('Online Mode')">
+    <div class="btn-icon">🌍</div>
+    <div class="btn-label">Online</div>
+  </button>
 
-  <div class="task">
-    <span>Win 1 Game</span>
-    <button class="collect" onclick="reward()">+20</button>
-  </div>
+  <button class="game-btn friends" onclick="alert('Friends Mode')">
+    <div class="btn-icon">👨‍👩‍👦</div>
+    <div class="btn-label">Friends</div>
+  </button>
 
-  <div class="task">
-    <span>Watch Video</span>
-    <button class="collect" onclick="reward()">+15</button>
-  </div>
+  <button class="game-btn computer" onclick="alert('Computer Mode')">
+    <div class="btn-icon">📱</div>
+    <div class="btn-label">Computer</div>
+  </button>
+
+  <button class="game-btn local" onclick="alert('Local Mode')">
+    <div class="btn-icon">🏠</div>
+    <div class="btn-label">Local</div>
+  </button>
 
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  <div>🏠<br>Home</div>
-  <div>👥<br>Friends</div>
-  <div>💼<br>Wallet</div>
-  <div>🛒<br>Store</div>
+<div class="bottom-nav">
+  <div class="nav-item active"><i class="fas fa-home"></i>Home</div>
+  <div class="nav-item"><i class="fas fa-trophy"></i>Leagues</div>
+  <div class="nav-item"><i class="fas fa-wallet"></i>Shop</div>
+  <div class="nav-item"><i class="fas fa-cog"></i>Settings</div>
 </div>
-
-<script>
-function play(mode){
-  alert("Starting: " + mode);
-}
-
-function reward(){
-  alert("Coins Added!");
-}
-</script>
 
 </body>
 </html>

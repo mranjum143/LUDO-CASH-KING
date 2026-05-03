@@ -3,72 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Ludo - Premium 4D</title>
+    <title>Ludo Cash King - 4D Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* پریمیم 4D بٹن کا ڈیزائن */
-        .btn-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            padding: 50px;
-            background: #1a0b2e;
+        :root {
+            --gold: linear-gradient(180deg, #FFD700 0%, #B8860B 100%);
+            --royal-purple: radial-gradient(circle, #2d1b4d 0%, #1a0b2e 100%);
+            --card-bg: linear-gradient(145deg, #1e1e3f, #0f0f1a);
         }
 
-        .ludo-card {
-            width: 150px;
-            height: 180px;
-            background: linear-gradient(180deg, #4ade80 0%, #15803d 100%);
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 0 15px 0 #052e16, 0 25px 50px rgba(0,0,0,0.5); /* 4D Depth */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-
-        .ludo-card:active {
-            transform: translateY(10px);
-            box-shadow: 0 5px 0 #052e16;
-        }
-
-        /* اصلی گوٹی کا ڈیزائن (Using Image for Realism) */
-        .goti-image {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
-            animation: float 3s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .label {
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--royal-purple);
             color: white;
+            overflow-x: hidden;
+            direction: rtl; /* اردو کے لحاظ سے */
+        }
+
+        /* شاہی ہیڈر */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid gold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .profile-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 3px solid #FFD700;
+            box-shadow: 0 0 15px gold;
+        }
+
+        .game-logo h1 {
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 28px;
+            margin: 0;
+            text-transform: uppercase;
             font-weight: 900;
-            margin-top: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .currency-bar {
+            background: rgba(0,0,0,0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid gold;
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        /* کارڈ کنٹینر */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 4D کارڈ ڈیزائن */
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 15px rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 45px rgba(255, 215, 0, 0.2);
+            border-color: gold;
+        }
+
+        .card-logo {
+            font-size: 50px;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
+        }
+
+        .game-card h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: gold;
+            text-transform: uppercase;
+        }
+
+        /* سائے والی 4D گوٹی */
+        .pawn-preview {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, #ff4b2b, #ff416c);
+            border-radius: 50% 50% 50% 50% / 20% 20% 80% 80%;
+            margin: 10px auto;
+            position: relative;
+            box-shadow: 0 12px 10px rgba(0,0,0,0.6); /* گہرا سایہ */
+        }
+
+        /* ساؤنڈ بٹن (صرف ٹیسٹ کے لیے) */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: gold;
+            color: black;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
         }
     </style>
 </head>
-<body>
+<body onload="playEntrySound()">
 
-    <div class="btn-container">
-        <div class="ludo-card">
-            <img src="https://img.icons8.com/color/144/board-game.png" class="goti-image" alt="4D Goti">
-            <div class="label">2 PLAYER</div>
+    <audio id="entrySound" src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3"></audio>
+
+    <header>
+        <div class="profile-section">
+            <img src="https://via.placeholder.com/100" alt="Ahmad" class="profile-img">
+            <div>
+                <div style="font-size: 12px; color: gold;">خوش آمدید</div>
+                <div style="font-weight: bold;">احمد نفیس</div>
+            </div>
         </div>
 
-        <div class="ludo-card" style="background: linear-gradient(180deg, #f87171 0%, #991b1b 100%); box-shadow: 0 15px 0 #450a0a;">
-            <img src="https://img.icons8.com/color/144/ludo.png" class="goti-image" alt="4D Goti">
-            <div class="label">4 PLAYER</div>
+        <div class="game-logo">
+            <h1>LUDO CASH KING</h1>
+        </div>
+
+        <div class="currency-bar">
+            <i class="fas fa-coins"></i> 50,000
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="game-card">
+            <i class="fas fa-globe card-logo" style="color: #4ade80;"></i>
+            <h3>آن لائن میچ</h3>
+            <div class="pawn-preview"></div>
+        </div>
+
+        <div class="game-card">
+            <i class="fas fa-users card-logo" style="color: #60a5fa;"></i>
+            <h3>دوستوں کا ٹیبل</h3>
+            <div class="pawn-preview" style="background: radial-gradient(circle, #3b82f6, #1d4ed8);"></div>
+        </div>
+
+        <div class="game-card">
+            <i class="fas fa-mobile-alt card-logo" style="color: #f87171;"></i>
+            <h3>آف لائن پلے</h3>
+            <div class="pawn-preview" style="background: radial-gradient(circle, #f87171, #b91c1c);"></div>
+        </div>
+
+        <div class="game-card">
+            <i class="fas fa-robot card-logo" style="color: #fbbf24;"></i>
+            <h3>کمپیوٹر</h3>
+            <div class="pawn-preview" style="background: radial-gradient(circle, #fbbf24, #d97706);"></div>
+        </div>
+
+        <div class="game-card">
+            <i class="fas fa-trophy card-logo" style="color: #c084fc;"></i>
+            <h3>ٹورنامنٹ</h3>
+            <div class="pawn-preview" style="background: radial-gradient(circle, #c084fc, #7e22ce);"></div>
         </div>
     </div>
+
+    <script>
+        function playEntrySound() {
+            var audio = document.getElementById("entrySound");
+            audio.play().catch(function(error) {
+                console.log("Auto-play was prevented. Click anywhere to play sound.");
+            });
+        }
+        
+        // سکرین پر کہیں بھی کلک کرنے سے ساؤنڈ چلے گا اگر آٹو پلے بلاک ہو
+        document.body.addEventListener('click', function() {
+            document.getElementById("entrySound").play();
+        }, { once: true });
+    </script>
 
 </body>
 </html>

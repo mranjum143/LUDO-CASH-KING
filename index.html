@@ -3,288 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Cash King | Ahmad Edition</title>
+    <title>Ahmad Ludo Cash King | 4D Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;600;800&display=swap');
-
-        :root {
-            --gold: #FFD700;
-            --gold-shadow: rgba(255, 215, 0, 0.4);
-            --bg-deep: #050510;
-        }
+        /* پریمیم گیمنگ فونٹ اور بیک گراؤنڈ */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            background: var(--bg-deep);
+            background: radial-gradient(circle, #2d1b4d 0%, #1a0b2e 100%);
             font-family: 'Poppins', sans-serif;
-            color: white;
             display: flex;
             justify-content: center;
             overflow-x: hidden;
-            direction: ltr;
+            color: white;
         }
 
-        /* Main Container */
-        .app-container {
+        .main-wrapper {
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             min-height: 100vh;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), linear-gradient(180deg, #0a0a20 0%, #050510 100%);
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
             position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            padding-bottom: 80px;
+            padding-bottom: 90px;
         }
 
-        /* Header & Animated Crown */
-        .header {
-            text-align: center;
-            padding: 30px 0 10px;
-        }
-
-        .crown-box {
-            font-size: 60px;
-            color: var(--gold);
-            filter: drop-shadow(0 0 15px var(--gold));
-            animation: crownFloat 2.5s infinite ease-in-out;
-            display: inline-block;
-        }
-
-        @keyframes crownFloat {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-15px) rotate(5deg); scale: 1.1; }
-        }
-
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 28px;
-            font-weight: 900;
-            background: linear-gradient(to bottom, #FFF7AD 0%, #FFAA00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-top: 5px;
-            letter-spacing: 2px;
-        }
-
-        /* Stats Bar */
-        .stats-bar {
+        /* ٹاپ بار - شاہی تاج اور کرنسی */
+        .top-hud {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px;
-            background: rgba(255,255,255,0.05);
-            margin: 10px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,215,0,0.2);
+            background: rgba(0,0,0,0.3);
+            border-bottom: 2px solid gold;
         }
 
-        .stat-card {
+        .currency-box {
+            background: #000;
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            padding: 2px 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: #000;
-            padding: 5px 12px;
-            border-radius: 15px;
-            border-bottom: 2px solid var(--gold);
+            gap: 5px;
+            box-shadow: inset 0 0 10px rgba(255,215,0,0.5);
         }
 
-        /* 3D Game Buttons */
+        .crown-logo {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .crown-icon {
+            font-size: 50px;
+            color: gold;
+            filter: drop-shadow(0 0 15px gold);
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.1); }
+        }
+
+        /* 4D بٹنز کا جادو */
         .game-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
             padding: 20px;
         }
 
-        .ludo-btn {
-            background: rgba(255,255,255,0.05);
-            border-radius: 25px;
-            padding: 25px 10px;
-            text-align: center;
-            border: 2px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-            transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .btn-4d {
             position: relative;
-            overflow: hidden;
-        }
-
-        .ludo-btn:hover {
-            transform: translateY(-8px);
-            border-color: var(--gold);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
-
-        .ludo-btn:active {
-            transform: translateY(2px);
-        }
-
-        .ludo-btn i {
-            font-size: 45px;
-            margin-bottom: 15px;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .ludo-btn:hover i {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        .btn-label {
-            font-weight: 800;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        /* Specific Colors for Buttons */
-        .btn-online { background: linear-gradient(145deg, #1d4ed8, #1e40af); border-bottom: 5px solid #172554; }
-        .btn-friends { background: linear-gradient(145deg, #7e22ce, #581c87); border-bottom: 5px solid #2e1065; }
-        .btn-comp { background: linear-gradient(145deg, #15803d, #166534); border-bottom: 5px solid #052e16; }
-        .btn-local { background: linear-gradient(145deg, #b91c1c, #991b1b); border-bottom: 5px solid #450a0a; }
-
-        /* Animated Wheel/Task Section */
-        .reward-section {
-            background: rgba(255,215,0,0.1);
-            margin: 20px;
-            padding: 20px;
+            height: 160px;
             border-radius: 25px;
-            border: 2px dashed var(--gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            border: none;
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+            box-shadow: 0 10px 0 #000; /* بٹن کی موٹائی */
+        }
+
+        .btn-4d:active {
+            transform: translateY(8px);
+            box-shadow: 0 2px 0 #000;
+        }
+
+        /* مخصوص کلرز اور ڈیزائن */
+        .two-player { 
+            background: linear-gradient(180deg, #4ade80 0%, #166534 100%); 
+            border-top: 5px solid #86efac;
+        }
+        .four-player { 
+            background: linear-gradient(180deg, #f87171 0%, #991b1b 100%); 
+            border-top: 5px solid #fca5a5;
+        }
+        .online-play { 
+            background: linear-gradient(180deg, #fbbf24 0%, #92400e 100%); 
+            border-top: 5px solid #fde68a;
+        }
+        .friends-play { 
+            background: linear-gradient(180deg, #60a5fa 0%, #1e40af 100%); 
+            border-top: 5px solid #93c5fd;
+        }
+
+        .token-group {
+            font-size: 40px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+        }
+
+        /* لکی اسپن وہیل (Floating) */
+        .lucky-wheel-container {
             text-align: center;
-            animation: pulseBg 2s infinite;
+            margin-top: 20px;
         }
 
-        @keyframes pulseBg {
-            0%, 100% { border-color: var(--gold); }
-            50% { border-color: #fff; }
+        .spin-btn {
+            background: conic-gradient(red, yellow, blue, green, red);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid gold;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            animation: rotate 5s linear infinite;
+            box-shadow: 0 0 20px gold;
         }
 
-        /* Professional Navigation */
-        .bottom-nav {
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* فائنل نیویگیشن بار */
+        .bottom-navbar {
             position: fixed;
             bottom: 0;
             width: 100%;
-            max-width: 450px;
-            background: #000;
+            max-width: 420px;
+            background: #111;
             display: flex;
             justify-content: space-around;
-            padding: 15px 0;
-            border-top: 3px solid var(--gold);
-            border-radius: 25px 25px 0 0;
-            z-index: 100;
+            padding: 10px 0;
+            border-top: 4px solid gold;
+            border-radius: 20px 20px 0 0;
         }
 
         .nav-item {
-            color: #666;
             text-align: center;
+            color: #888;
             font-size: 11px;
-            cursor: pointer;
-            transition: 0.3s;
+            text-decoration: none;
         }
 
-        .nav-item.active {
-            color: var(--gold);
-            transform: translateY(-5px);
-        }
-
-        .nav-item i {
-            font-size: 24px;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        /* Ahmad's Signature Badge */
-        .signature {
-            text-align: center;
-            font-size: 12px;
-            color: rgba(255,255,255,0.3);
-            margin-top: 20px;
-        }
+        .nav-item.active { color: gold; transform: translateY(-5px); }
+        .nav-item i { font-size: 24px; display: block; margin-bottom: 2px; }
 
     </style>
 </head>
 <body>
 
-    <div class="app-container">
+    <div class="main-wrapper">
         
-        <div class="header">
-            <div class="crown-box"><i class="fas fa-crown"></i></div>
-            <div class="main-title">LUDO CASH KING</div>
+        <div class="top-hud">
+            <div class="currency-box">
+                <i class="fas fa-coins" style="color: gold;"></i>
+                <span>10,000</span>
+            </div>
+            <div style="text-align: center;">
+                <img src="https://ui-avatars.com/api/?name=Ahmad&background=FFD700&color=000" style="width: 45px; border-radius: 50%; border: 2px solid gold;">
+            </div>
+            <div class="currency-box">
+                <i class="fas fa-gem" style="color: #00d2ff;"></i>
+                <span>5,500</span>
+            </div>
         </div>
 
-        <div class="stats-bar">
-            <div class="stat-card">
-                <i class="fas fa-user-circle" style="color: #00d2ff;"></i>
-                <span style="font-size: 12px;">Ahmad Nafees</span>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-coins" style="color: gold;"></i>
-                <span>25,400</span>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-gem" style="color: #ff00ff;"></i>
-                <span>1,500</span>
-            </div>
+        <div class="crown-logo">
+            <i class="fas fa-crown crown-icon"></i>
+            <h2 style="margin: 0; color: gold; text-shadow: 2px 2px #000;">LUDO CASH KING</h2>
+            <p style="font-size: 12px; color: #ccc;">Ahmad Nafees Edition</p>
         </div>
 
         <div class="game-grid">
-            <div class="ludo-btn btn-online" onclick="playEffect()">
-                <i class="fas fa-globe-americas"></i>
-                <span class="btn-label">Online Battle</span>
+            <div class="btn-4d two-player">
+                <div class="token-group">
+                    <i class="fas fa-chess-pawn" style="color: red;"></i>
+                    <i class="fas fa-chess-pawn" style="color: blue;"></i>
+                </div>
+                TWO PLAYER
             </div>
 
-            <div class="ludo-btn btn-friends" onclick="playEffect()">
-                <i class="fas fa-users-viewfinder"></i>
-                <span class="btn-label">Private Room</span>
+            <div class="btn-4d four-player">
+                <div class="token-group">
+                    <i class="fas fa-users"></i>
+                </div>
+                FOUR PLAYER
             </div>
 
-            <div class="ludo-btn btn-comp" onclick="playEffect()">
-                <i class="fas fa-robot"></i>
-                <span class="btn-label">VS Computer</span>
+            <div class="btn-4d friends-play">
+                <div class="token-group">
+                    <i class="fas fa-home"></i>
+                </div>
+                WITH FRIENDS
             </div>
 
-            <div class="ludo-btn btn-local" onclick="playEffect()">
-                <i class="fas fa-couch"></i>
-                <span class="btn-label">Local Play</span>
+            <div class="btn-4d online-play">
+                <div class="token-group">
+                    <i class="fas fa-globe"></i>
+                </div>
+                PLAY ONLINE
             </div>
         </div>
 
-        <div class="reward-section">
-            <i class="fas fa-dharmachakra fa-spin fa-3x" style="color: gold; margin-bottom: 10px;"></i>
-            <h3 style="margin: 0; font-size: 18px;">Lucky Spin</h3>
-            <p style="font-size: 11px; color: #ccc;">Win up to 10,000 Coins Daily!</p>
-            <button style="background: gold; border: none; padding: 8px 25px; border-radius: 20px; font-weight: bold; margin-top: 10px; cursor: pointer;">SPIN NOW</button>
+        <div class="lucky-wheel-container">
+            <div class="spin-btn">SPIN</div>
+            <p style="color: gold; margin-top: 10px;">DAILY BONUS FREE!</p>
         </div>
 
-        <div class="signature">
-            Designed for Ahmad Nafees Anjum
-        </div>
-
-        <div class="bottom-nav">
-            <div class="nav-item active"><i class="fas fa-home"></i>Home</div>
-            <div class="nav-item"><i class="fas fa-comment-dots"></i>Chat</div>
-            <div class="nav-item"><i class="fas fa-wallet"></i>Wallet</div>
-            <div class="nav-item"><i class="fas fa-shop"></i>Store</div>
-            <div class="nav-item"><i class="fas fa-user"></i>Profile</div>
+        <div class="bottom-navbar">
+            <a href="#" class="nav-item active"><i class="fas fa-home"></i>HOME</a>
+            <a href="#" class="nav-item"><i class="fas fa-trophy"></i>EVENT</a>
+            <a href="#" class="nav-item"><i class="fas fa-wallet"></i>STORE</a>
+            <a href="#" class="nav-item"><i class="fas fa-users"></i>SOCIAL</a>
         </div>
 
     </div>
-
-    <script>
-        function playEffect() {
-            // Button Click Vibration or Sound logic can be added here
-            console.log("Button Pressed!");
-        }
-
-        // Animated entry for cards
-        document.querySelectorAll('.ludo-btn').forEach((btn, index) => {
-            btn.style.opacity = '0';
-            btn.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                btn.style.transition = '0.5s all ease';
-                btn.style.opacity = '1';
-                btn.style.transform = 'translateY(0)';
-            }, index * 100);
-        });
-    </script>
 
 </body>
 </html>

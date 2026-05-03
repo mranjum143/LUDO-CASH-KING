@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Cash King | Admin Dashboard</title>
+    <style>
+        body { background-color: #050510; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; direction: rtl; }
+        .container { max-width: 900px; margin: auto; }
+        .header { text-align: center; padding: 20px; border-bottom: 2px solid #FFD700; margin-bottom: 30px; }
+        .header h1 { color: #FFD700; text-shadow: 2px 2px 4px #000; margin: 0; }
+        
+        .card { background: #121225; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .payment-card { border-right: 5px solid #00FF95; background: #1a2a23; }
+        
+        h3 { color: #00E5FF; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .info-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 18px; }
+        .val { color: #FFD700; font-weight: bold; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: center; border-bottom: 1px solid #222; }
+        th { background-color: #1a1a35; color: #00E5FF; }
+        
+        .btn { padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; margin: 2px; }
+        .btn-dice { background-color: #7B1FA2; color: white; }
+        .btn-dice:hover { background-color: #9C27B0; }
+        .btn-cash { background-color: #00FF95; color: #000; }
+        .btn-cash:hover { background-color: #00cc77; }
+        
+        .status-online { color: #00FF95; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>👑 LUDO CASH KING - ایڈمن پینل</h1>
+        <p>خوش آمدید! یہاں سے آپ پوری گیم کنٹرول کر سکتے ہیں۔</p>
+    </div>
+
+    <div class="card payment-card">
+        <h3>💰 پیمنٹ اکاؤنٹ کی تفصیلات (JazzCash)</h3>
+        <div class="info-row">
+            <span>اکاؤنٹ ہولڈر کا نام:</span>
+            <span class="val">Sidra Sahzadi</span>
+        </div>
+        <div class="info-row">
+            <span>جاز کیش نمبر:</span>
+            <span class="val">03061424135</span>
+        </div>
+        <p style="font-size: 14px; color: #ccc;">(نوٹ: یوزرز کو ایپ میں یہی نمبر نظر آئے گا جہاں وہ پیسے بھیجیں گے۔)</p>
+    </div>
+
+    <div class="card">
+        <h3>👥 پلیئرز لسٹ اور گیم کنٹرول</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>پلیئر آئی ڈی</th>
+                    <th>نام / نمبر</th>
+                    <th>بیلنس (PKR)</th>
+                    <th>ڈائس کنٹرول</th>
+                    <th>ایکشن</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <tr>
+                    <td>#1024</td>
+                    <td>Usman Ahmad <br><small>+923270394662</small></td>
+                    <td><span id="bal-1024">0</span></td>
+                    <td>
+                        <button class="btn btn-dice" onclick="setDice('1024', 6)">6 لائیں</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-cash" onclick="addMoney('1024')">پیسے ڈالیں</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // ڈائس کنٹرول کا فنکشن
+    function setDice(userId, num) {
+        alert("آئی ڈی " + userId + " کے لیے اگلی باری پر " + num + " سیٹ کر دیا گیا ہے!");
+        // یہاں آپ کا فائر بیس اپ ڈیٹ کوڈ آئے گا
+    }
+
+    // پیسے ایڈ کرنے کا فنکشن
+    function addMoney(userId) {
+        let amount = prompt("کتنے پیسے (PKR) ایڈ کرنے ہیں؟");
+        if (amount != null && amount != "") {
+            document.getElementById('bal-' + userId).innerText = amount;
+            alert("کامیابی! " + amount + " روپے ایڈ کر دیے گئے ہیں۔");
+        }
+    }
+</script>
+
+</body>
+</html>

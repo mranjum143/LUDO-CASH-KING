@@ -1,143 +1,168 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Cash King | Pro Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&display=swap');
+<meta charset="UTF-8">
+<title>Ludo Cash King</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: #020617; /* Deep Void Black */
-            font-family: 'Urbanist', sans-serif;
-            color: #f8fafc;
-            direction: rtl;
-        }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
+}
 
-        /* Luxury Gold Gradient Card */
-        .pro-card {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 24px;
-            backdrop-filter: blur(15px);
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s all ease;
-        }
+/* Header */
+.header {
+  text-align: center;
+  padding: 15px;
+}
 
-        .pro-card:hover {
-            border-color: #FFD700;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
-            transform: translateY(-5px);
-        }
+.logo {
+  font-size: 40px;
+  color: gold;
+}
 
-        .gold-text {
-            background: linear-gradient(to bottom, #FFF7AD 0%, #FFAA00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 900;
-        }
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: gold;
+}
 
-        .action-btn {
-            background: linear-gradient(180deg, #FFD700 0%, #B8860B 100%);
-            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
-            border-radius: 12px;
-            color: #000;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
+/* Profile */
+.profile {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  margin: 10px;
+  border-radius: 10px;
+}
 
-        /* Background Pattern */
-        .bg-pattern {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            opacity: 0.1;
-            z-index: -1;
-        }
-    </style>
+/* Cards */
+.card {
+  margin: 10px;
+  padding: 15px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn1 { background: linear-gradient(45deg, #00c6ff, #0072ff); }
+.btn2 { background: linear-gradient(45deg, #7b1fa2, #512da8); }
+.btn3 { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
+.btn4 { background: linear-gradient(45deg, #11998e, #38ef7d); }
+
+/* Daily Tasks */
+.task {
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.collect {
+  background: gold;
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: black;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.footer div {
+  color: white;
+  font-size: 14px;
+}
+</style>
 </head>
-<body class="p-4">
 
-    <div class="bg-pattern"></div>
+<body>
 
-    <div class="flex justify-between items-center mb-10">
-        <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl border-2 border-yellow-500 overflow-hidden shadow-lg shadow-yellow-500/20">
-                <img src="https://ui-avatars.com/api/?name=Ahmad&background=FFD700&color=000" alt="Profile">
-            </div>
-            <div>
-                <h2 class="text-lg font-black gold-text">احمد نفیس</h2>
-                <span class="text-xs text-gray-400">سپر ایڈمن موڈ</span>
-            </div>
-        </div>
-        <div class="flex items-center bg-white/5 border border-white/10 rounded-2xl px-4 py-2">
-            <i class="fas fa-coins text-yellow-500 mr-2 ml-2"></i>
-            <span class="text-xl font-bold">0.00</span>
-        </div>
-    </div>
+<!-- Header -->
+<div class="header">
+  <div class="logo">👑</div>
+  <div class="title">LUDO CASH KING</div>
+</div>
 
-    <div class="grid grid-cols-1 gap-6 mb-8">
-        
-        <div class="pro-card p-6">
-            <div class="flex justify-between items-center">
-                <div>
-                    <span class="bg-yellow-500/20 text-yellow-500 text-[10px] font-bold px-3 py-1 rounded-full border border-yellow-500/30">کیش مقابلہ</span>
-                    <h1 class="text-3xl gold-text mt-2">1 VS 1 BATTLE</h1>
-                    <p class="text-sm text-gray-400 mt-1">اصلی پیسوں کے لیے کھیلیں اور جیتیں۔</p>
-                </div>
-                <div class="text-6xl text-yellow-500/20"><i class="fas fa-bolt"></i></div>
-            </div>
-            <button class="action-btn w-full py-3 mt-6">کھیلیں</button>
-        </div>
+<!-- Profile -->
+<div class="profile">
+  <div>Usman Ahmad<br>Level 12</div>
+  <div>💰 PKR 2540<br>🪙 15680</div>
+</div>
 
-        <div class="pro-card p-6 border-blue-500/30 bg-blue-500/5">
-            <div class="flex justify-between items-center">
-                <div>
-                    <span class="bg-blue-500/20 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/30">میگا ایونٹ</span>
-                    <h1 class="text-3xl font-black text-blue-400 mt-2 uppercase">Tournament</h1>
-                    <p class="text-sm text-gray-400 mt-1">بڑے انعامات حاصل کرنے کا موقع۔</p>
-                </div>
-                <div class="text-6xl text-blue-500/20"><i class="fas fa-trophy"></i></div>
-            </div>
-            <button class="bg-blue-600 text-white w-full py-3 mt-6 rounded-xl font-bold shadow-lg shadow-blue-600/30">روم جوائن کریں</button>
-        </div>
+<!-- Game Modes -->
+<div class="card">
+  <h3>🎮 Play Game</h3>
+  <button class="btn btn1" onclick="play('Quick Match')">Quick Match</button>
+  <button class="btn btn2" onclick="play('Create Room')">Create Room</button>
+  <button class="btn btn3" onclick="play('4 Player Battle')">4 Player Battle</button>
+  <button class="btn btn4" onclick="play('Tournament')">Tournament</button>
+</div>
 
-    </div>
+<!-- Daily Tasks -->
+<div class="card">
+  <h3>🎯 Daily Tasks</h3>
 
-    <div class="grid grid-cols-2 gap-4 mb-20">
-        <div class="pro-card p-4 text-center">
-            <i class="fas fa-wallet text-green-400 text-2xl mb-2"></i>
-            <h4 class="text-xs font-bold text-gray-300">جاز کیش</h4>
-            <p class="text-xs text-yellow-500 font-bold">03061424135</p>
-        </div>
-        <div class="pro-card p-4 text-center">
-            <i class="fas fa-gift text-purple-400 text-2xl mb-2"></i>
-            <h4 class="text-xs font-bold text-gray-300">ڈیلی ٹاسک</h4>
-            <p class="text-xs text-purple-400 font-bold">انعامات جیتیں</p>
-        </div>
-    </div>
+  <div class="task">
+    <span>Play 1 Game</span>
+    <button class="collect" onclick="reward()">+10</button>
+  </div>
 
-    <div class="fixed bottom-0 left-0 w-full bg-[#050510] border-t border-white/5 p-4 flex justify-around">
-        <div class="text-yellow-500 flex flex-col items-center">
-            <i class="fas fa-home text-2xl"></i>
-            <span class="text-[10px] font-bold">ہوم</span>
-        </div>
-        <div class="text-gray-600 flex flex-col items-center">
-            <i class="fas fa-history text-2xl"></i>
-            <span class="text-[10px] font-bold">ہسٹری</span>
-        </div>
-        <div class="text-gray-600 flex flex-col items-center">
-            <i class="fas fa-comment-dots text-2xl"></i>
-            <span class="text-[10px] font-bold">چیٹ</span>
-        </div>
-        <div class="text-gray-600 flex flex-col items-center">
-            <i class="fas fa-cog text-2xl"></i>
-            <span class="text-[10px] font-bold">سیٹنگز</span>
-        </div>
-    </div>
+  <div class="task">
+    <span>Win 1 Game</span>
+    <button class="collect" onclick="reward()">+20</button>
+  </div>
+
+  <div class="task">
+    <span>Watch Video</span>
+    <button class="collect" onclick="reward()">+15</button>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div>🏠 Home</div>
+  <div>👥 Friends</div>
+  <div>💼 Wallet</div>
+  <div>🛒 Store</div>
+</div>
+
+<script>
+function play(mode){
+  alert("Starting: " + mode);
+}
+
+function reward(){
+  alert("Coins Added!");
+}
+</script>
 
 </body>
 </html>

@@ -3,244 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Ludo Cash King | 4D Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Ahmad Ludo - Premium 4D</title>
     <style>
-        /* پریمیم گیمنگ فونٹ اور بیک گراؤنڈ */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle, #2d1b4d 0%, #1a0b2e 100%);
-            font-family: 'Poppins', sans-serif;
+        /* پریمیم 4D بٹن کا ڈیزائن */
+        .btn-container {
             display: flex;
-            justify-content: center;
-            overflow-x: hidden;
-            color: white;
-        }
-
-        .main-wrapper {
-            width: 100%;
-            max-width: 420px;
-            min-height: 100vh;
-            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            position: relative;
-            padding-bottom: 90px;
-        }
-
-        /* ٹاپ بار - شاہی تاج اور کرنسی */
-        .top-hud {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: rgba(0,0,0,0.3);
-            border-bottom: 2px solid gold;
-        }
-
-        .currency-box {
-            background: #000;
-            border: 2px solid #ffd700;
-            border-radius: 20px;
-            padding: 2px 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: inset 0 0 10px rgba(255,215,0,0.5);
-        }
-
-        .crown-logo {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .crown-icon {
-            font-size: 50px;
-            color: gold;
-            filter: drop-shadow(0 0 15px gold);
-            animation: bounce 2s infinite ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.1); }
-        }
-
-        /* 4D بٹنز کا جادو */
-        .game-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 20px;
-            padding: 20px;
+            justify-content: center;
+            padding: 50px;
+            background: #1a0b2e;
         }
 
-        .btn-4d {
+        .ludo-card {
+            width: 150px;
+            height: 180px;
+            background: linear-gradient(180deg, #4ade80 0%, #15803d 100%);
+            border-radius: 20px;
             position: relative;
-            height: 160px;
-            border-radius: 25px;
+            box-shadow: 0 15px 0 #052e16, 0 25px 50px rgba(0,0,0,0.5); /* 4D Depth */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: 0.2s;
-            border: none;
-            text-decoration: none;
+            transition: 0.1s;
+        }
+
+        .ludo-card:active {
+            transform: translateY(10px);
+            box-shadow: 0 5px 0 #052e16;
+        }
+
+        /* اصلی گوٹی کا ڈیزائن (Using Image for Realism) */
+        .goti-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .label {
             color: white;
             font-weight: 900;
-            box-shadow: 0 10px 0 #000; /* بٹن کی موٹائی */
+            margin-top: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
-        .btn-4d:active {
-            transform: translateY(8px);
-            box-shadow: 0 2px 0 #000;
-        }
-
-        /* مخصوص کلرز اور ڈیزائن */
-        .two-player { 
-            background: linear-gradient(180deg, #4ade80 0%, #166534 100%); 
-            border-top: 5px solid #86efac;
-        }
-        .four-player { 
-            background: linear-gradient(180deg, #f87171 0%, #991b1b 100%); 
-            border-top: 5px solid #fca5a5;
-        }
-        .online-play { 
-            background: linear-gradient(180deg, #fbbf24 0%, #92400e 100%); 
-            border-top: 5px solid #fde68a;
-        }
-        .friends-play { 
-            background: linear-gradient(180deg, #60a5fa 0%, #1e40af 100%); 
-            border-top: 5px solid #93c5fd;
-        }
-
-        .token-group {
-            font-size: 40px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
-        }
-
-        /* لکی اسپن وہیل (Floating) */
-        .lucky-wheel-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .spin-btn {
-            background: conic-gradient(red, yellow, blue, green, red);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 5px solid gold;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-            animation: rotate 5s linear infinite;
-            box-shadow: 0 0 20px gold;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* فائنل نیویگیشن بار */
-        .bottom-navbar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            max-width: 420px;
-            background: #111;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            border-top: 4px solid gold;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .nav-item {
-            text-align: center;
-            color: #888;
-            font-size: 11px;
-            text-decoration: none;
-        }
-
-        .nav-item.active { color: gold; transform: translateY(-5px); }
-        .nav-item i { font-size: 24px; display: block; margin-bottom: 2px; }
-
     </style>
 </head>
 <body>
 
-    <div class="main-wrapper">
-        
-        <div class="top-hud">
-            <div class="currency-box">
-                <i class="fas fa-coins" style="color: gold;"></i>
-                <span>10,000</span>
-            </div>
-            <div style="text-align: center;">
-                <img src="https://ui-avatars.com/api/?name=Ahmad&background=FFD700&color=000" style="width: 45px; border-radius: 50%; border: 2px solid gold;">
-            </div>
-            <div class="currency-box">
-                <i class="fas fa-gem" style="color: #00d2ff;"></i>
-                <span>5,500</span>
-            </div>
+    <div class="btn-container">
+        <div class="ludo-card">
+            <img src="https://img.icons8.com/color/144/board-game.png" class="goti-image" alt="4D Goti">
+            <div class="label">2 PLAYER</div>
         </div>
 
-        <div class="crown-logo">
-            <i class="fas fa-crown crown-icon"></i>
-            <h2 style="margin: 0; color: gold; text-shadow: 2px 2px #000;">LUDO CASH KING</h2>
-            <p style="font-size: 12px; color: #ccc;">Ahmad Nafees Edition</p>
+        <div class="ludo-card" style="background: linear-gradient(180deg, #f87171 0%, #991b1b 100%); box-shadow: 0 15px 0 #450a0a;">
+            <img src="https://img.icons8.com/color/144/ludo.png" class="goti-image" alt="4D Goti">
+            <div class="label">4 PLAYER</div>
         </div>
-
-        <div class="game-grid">
-            <div class="btn-4d two-player">
-                <div class="token-group">
-                    <i class="fas fa-chess-pawn" style="color: red;"></i>
-                    <i class="fas fa-chess-pawn" style="color: blue;"></i>
-                </div>
-                TWO PLAYER
-            </div>
-
-            <div class="btn-4d four-player">
-                <div class="token-group">
-                    <i class="fas fa-users"></i>
-                </div>
-                FOUR PLAYER
-            </div>
-
-            <div class="btn-4d friends-play">
-                <div class="token-group">
-                    <i class="fas fa-home"></i>
-                </div>
-                WITH FRIENDS
-            </div>
-
-            <div class="btn-4d online-play">
-                <div class="token-group">
-                    <i class="fas fa-globe"></i>
-                </div>
-                PLAY ONLINE
-            </div>
-        </div>
-
-        <div class="lucky-wheel-container">
-            <div class="spin-btn">SPIN</div>
-            <p style="color: gold; margin-top: 10px;">DAILY BONUS FREE!</p>
-        </div>
-
-        <div class="bottom-navbar">
-            <a href="#" class="nav-item active"><i class="fas fa-home"></i>HOME</a>
-            <a href="#" class="nav-item"><i class="fas fa-trophy"></i>EVENT</a>
-            <a href="#" class="nav-item"><i class="fas fa-wallet"></i>STORE</a>
-            <a href="#" class="nav-item"><i class="fas fa-users"></i>SOCIAL</a>
-        </div>
-
     </div>
 
 </body>

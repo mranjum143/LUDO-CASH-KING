@@ -1,184 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
-<title>Ludo Cash King | Gaming Dashboard</title>
+<title>Ludo Cash King | Ultimate Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --gold: linear-gradient(180deg, #FFD700 0%, #B8860B 100%);
-    --blue: linear-gradient(180deg, #00d2ff 0%, #3a7bd5 100%);
-    --purple: linear-gradient(180deg, #9d50bb 0%, #6e48aa 100%);
-    --red: linear-gradient(180deg, #ff4b2b 0%, #ff416c 100%);
-    --green: linear-gradient(180deg, #11998e 0%, #38ef7d 100%);
+    --gold-grad: linear-gradient(180deg, #FFD700 0%, #B8860B 100%);
+    --bg-dark: #050510;
   }
 
   body {
     margin: 0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: #0b0e21; /* Dark Gaming Theme */
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-dark);
     color: white;
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-    direction: ltr;
+    direction: ltr; /* UI icons/labels logic */
   }
 
-  /* Top Bar like Ludo Star */
-  .top-bar {
-    background: rgba(0,0,0,0.6);
+  /* Animated Crown Logo */
+  .logo-section {
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .crown-icon {
+    font-size: 45px;
+    color: #FFD700;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+    margin-bottom: -10px;
+    animation: float 2s infinite ease-in-out;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .app-name {
+    font-size: 26px;
+    font-weight: 900;
+    background: var(--gold-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+  }
+
+  /* Top Stats Bar */
+  .stats-bar {
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px;
-    align-items: center;
-    border-bottom: 2px solid #FFD700;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.05);
   }
 
-  .currency-box {
+  .stat-item {
     background: #000;
-    border: 1.5px solid #FFD700;
-    border-radius: 20px;
-    padding: 2px 10px;
+    border: 1px solid #FFD700;
+    border-radius: 50px;
+    padding: 4px 15px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     font-weight: bold;
-    font-size: 14px;
-    min-width: 90px;
+    box-shadow: inset 0 0 10px rgba(255,215,0,0.2);
   }
 
-  /* Main Menu Buttons Grid */
-  .menu-grid {
+  /* Main Grid Layout */
+  .game-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    padding: 20px;
+    gap: 20px;
+    padding: 25px;
     flex-grow: 1;
-    align-content: center;
   }
 
-  /* The 3D Gaming Button style from your images */
-  .game-btn {
-    aspect-ratio: 1/1;
-    border: none;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
+  .mode-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 25px;
+    border: 2px solid rgba(255,255,255,0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 0px rgba(0,0,0,0.4);
-    transition: 0.1s;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: 0.2s;
+    cursor: pointer;
   }
 
-  .game-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 4px 0px rgba(0,0,0,0.4);
+  .mode-card:active { transform: scale(0.95); }
+
+  /* Shiny 3D Icons Style */
+  .icon-wrapper {
+    font-size: 55px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
   }
 
-  .btn-icon {
-    font-size: 50px;
-    margin-bottom: 10px;
-    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
-  }
-
-  .btn-label {
-    font-weight: 900;
-    font-size: 16px;
+  .card-label {
+    font-weight: bold;
+    font-size: 14px;
     text-transform: uppercase;
-    text-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
   }
 
-  /* Specific Button Colors */
-  .online { background: var(--green); border: 3px solid #1ef09c; }
-  .friends { background: var(--purple); border: 3px solid #c078f1; }
-  .computer { background: var(--blue); border: 3px solid #71d9ff; }
-  .local { background: var(--red); border: 3px solid #ff7e67; }
+  /* Color Themes per Button */
+  .c-online { background: linear-gradient(135deg, #2ecc71, #27ae60); border-color: #2ecc71; }
+  .c-friends { background: linear-gradient(135deg, #9b59b6, #8e44ad); border-color: #9b59b6; }
+  .c-comp { background: linear-gradient(135deg, #3498db, #2980b9); border-color: #3498db; }
+  .c-local { background: linear-gradient(135deg, #e74c3c, #c0392b); border-color: #e74c3c; }
 
-  /* Bottom Navigation */
-  .bottom-nav {
-    background: linear-gradient(0deg, #000 0%, #1a1a2e 100%);
+  /* Professional Bottom Navigation */
+  .navbar {
+    background: #000;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
-    border-top: 2px solid #FFD700;
+    padding: 12px 0;
+    border-top: 2px solid #B8860B;
   }
 
-  .nav-item {
-    text-align: center;
-    font-size: 12px;
-    color: #aaa;
+  .nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
   }
 
-  .nav-item.active { color: #FFD700; }
-  .nav-item i { font-size: 22px; display: block; margin-bottom: 2px; }
+  .nav-btn.active {
+    color: #FFD700;
+  }
 
-  /* Center Logo Area */
-  .logo-area {
-    text-align: center;
-    padding: 10px;
+  .nav-btn i {
+    font-size: 22px;
+    margin-bottom: 4px;
   }
-  .logo-area h1 {
-    margin: 0;
-    font-size: 28px;
-    color: gold;
-    text-shadow: 0 0 10px gold;
-  }
+
 </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <div style="width: 45px; height: 45px; border: 2px solid gold; border-radius: 10px; overflow: hidden;">
-      <img src="https://ui-avatars.com/api/?name=Ahmad&background=FFD700" width="100%">
+  <div class="logo-section">
+    <div class="crown-icon"><i class="fas fa-crown"></i></div>
+    <div class="app-name">LUDO CASH KING</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item" style="color: gold;">
+      <i class="fas fa-coins"></i> 25,400
     </div>
-    <div style="font-size: 12px;"><b>Usman Ahmad</b><br>Lv. 12</div>
+    <div class="stat-item" style="color: #00d2ff;">
+      <i class="fas fa-gem"></i> 1,500
+    </div>
   </div>
-  <div style="display: flex; flex-direction: column; gap: 5px;">
-    <div class="currency-box">🪙 <span style="color: gold;">15,680</span></div>
-    <div class="currency-box">💎 <span style="color: #00d2ff;">1,250</span></div>
+
+  <div class="game-grid">
+    
+    <div class="mode-card c-online">
+      <div class="icon-wrapper">🌍</div>
+      <div class="card-label">Online</div>
+    </div>
+
+    <div class="mode-card c-friends">
+      <div class="icon-wrapper">👪</div>
+      <div class="card-label">Friends</div>
+    </div>
+
+    <div class="mode-card c-comp">
+      <div class="icon-wrapper">🤖</div>
+      <div class="card-label">Computer</div>
+    </div>
+
+    <div class="mode-card c-local">
+      <div class="icon-wrapper">🏟️</div>
+      <div class="card-label">Local</div>
+    </div>
+
   </div>
-</div>
 
-<div class="logo-area">
-  <h1>LUDO CASH KING</h1>
-</div>
-
-<div class="menu-grid">
-  
-  <button class="game-btn online" onclick="alert('Online Mode')">
-    <div class="btn-icon">🌍</div>
-    <div class="btn-label">Online</div>
-  </button>
-
-  <button class="game-btn friends" onclick="alert('Friends Mode')">
-    <div class="btn-icon">👨‍👩‍👦</div>
-    <div class="btn-label">Friends</div>
-  </button>
-
-  <button class="game-btn computer" onclick="alert('Computer Mode')">
-    <div class="btn-icon">📱</div>
-    <div class="btn-label">Computer</div>
-  </button>
-
-  <button class="game-btn local" onclick="alert('Local Mode')">
-    <div class="btn-icon">🏠</div>
-    <div class="btn-label">Local</div>
-  </button>
-
-</div>
-
-<div class="bottom-nav">
-  <div class="nav-item active"><i class="fas fa-home"></i>Home</div>
-  <div class="nav-item"><i class="fas fa-trophy"></i>Leagues</div>
-  <div class="nav-item"><i class="fas fa-wallet"></i>Shop</div>
-  <div class="nav-item"><i class="fas fa-cog"></i>Settings</div>
-</div>
+  <nav class="navbar">
+    <a href="#" class="nav-btn active">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="#" class="nav-btn">
+      <i class="fas fa-users"></i>
+      <span>Social</span>
+    </a>
+    <a href="#" class="nav-btn">
+      <i class="fas fa-wallet"></i>
+      <span>Wallet</span>
+    </a>
+    <a href="#" class="nav-btn">
+      <i class="fas fa-shopping-cart"></i>
+      <span>Shop</span>
+    </a>
+    <a href="#" class="nav-btn">
+      <i class="fas fa-user-circle"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
 
 </body>
 </html>

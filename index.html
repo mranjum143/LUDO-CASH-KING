@@ -3,94 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Cash King | Master Admin</title>
+    <title>Ludo Cash King | Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: radial-gradient(circle, #1a1a3a 0%, #050510 100%); font-family: 'Segoe UI', sans-serif; color: white; }
-        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; }
-        .gold-glow { box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); border: 1px solid #FFD700; }
-        .dice-btn { transition: transform 0.2s; }
-        .dice-btn:active { transform: scale(0.9); }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            background: radial-gradient(circle at center, #1a1a2e 0%, #020205 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Gold Neon Glow Effect */
+        .gold-border {
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffd700;
+        }
+
+        .header-title {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(to bottom, #fff 20%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        /* Animated Dice background element */
+        .dice-bg {
+            position: fixed;
+            font-size: 150px;
+            color: rgba(255, 215, 0, 0.03);
+            z-index: -1;
+            transform: rotate(20deg);
+            top: 10%;
+            right: 5%;
+        }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-4 md:p-6">
 
-    <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-10">
-            <h1 class="text-4xl md:text-6xl font-black text-yellow-400 mb-2 tracking-tighter">
-                <i class="fas fa-crown"></i> LUDO CASH KING
-            </h1>
-            <p class="text-blue-400 font-bold uppercase tracking-widest text-sm">ماسٹر کنٹرول پینل</p>
-        </div>
+    <i class="fas fa-dice dice-bg"></i>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <div class="glass-card gold-glow p-6 text-center">
-                <div class="bg-yellow-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-wallet text-2xl text-black"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">پیمنٹ سیٹنگز</h3>
-                <p class="text-gray-400 text-sm mb-4">JazzCash: Sidra Sahzadi</p>
-                <div class="text-2xl font-mono text-green-400">03061424135</div>
+    <div class="flex justify-between items-center mb-8 px-2">
+        <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-full gold-border p-1">
+                <img src="https://ui-avatars.com/api/?name=User&background=ffd700&color=000" class="rounded-full" alt="Profile">
             </div>
-
-            <div class="glass-card p-6 text-center border-blue-500 border">
-                <div class="text-blue-500 text-4xl mb-2"><i class="fas fa-users"></i></div>
-                <h3 class="text-lg">کل کھلاڑی</h3>
-                <div class="text-3xl font-bold">1,240</div>
-            </div>
-
-            <div class="glass-card p-6 text-center border-purple-500 border">
-                <div class="text-purple-500 text-4xl mb-2"><i class="fas fa-coins"></i></div>
-                <h3 class="text-lg">آج کی کمائی</h3>
-                <div class="text-3xl font-bold">RS 15,500</div>
+            <div>
+                <h2 class="text-lg font-bold">میرا اکاؤنٹ</h2>
+                <span class="text-green-400 text-sm"><i class="fas fa-circle text-[10px] animate-pulse"></i> آن لائن</span>
             </div>
         </div>
-
-        <div class="glass-card mt-10 overflow-hidden">
-            <div class="bg-white/5 p-4 border-b border-white/10 flex justify-between items-center">
-                <h3 class="font-bold"><i class="fas fa-gamepad mr-2 text-yellow-400"></i> لائیو پلیئرز</h3>
-                <span class="bg-green-500 text-xs px-2 py-1 rounded-full animate-pulse">LIVE</span>
-            </div>
-            
-            <div class="overflow-x-auto">
-                <table class="w-full text-right">
-                    <thead>
-                        <tr class="text-gray-400 text-sm uppercase">
-                            <th class="p-4">پلیئر</th>
-                            <th class="p-4">بیلنس</th>
-                            <th class="p-4 text-center">ڈائس کنٹرول</th>
-                            <th class="p-4 text-center">ایکشن</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-t border-white/5 hover:bg-white/5">
-                            <td class="p-4">
-                                <div class="font-bold">Usman Ahmad</div>
-                                <div class="text-xs text-gray-500">+923270394662</div>
-                            </td>
-                            <td class="p-4 text-green-400 font-bold">RS 2,540</td>
-                            <td class="p-4">
-                                <div class="flex justify-center gap-2">
-                                    <button onclick="setDice(6)" class="dice-btn bg-purple-600 px-3 py-1 rounded-md text-xs font-bold hover:bg-purple-500">6 لائیں</button>
-                                    <button onclick="setDice(1)" class="dice-btn bg-red-600 px-3 py-1 rounded-md text-xs font-bold hover:bg-red-500">1 لائیں</button>
-                                </div>
-                            </td>
-                            <td class="p-4 text-center">
-                                <button class="bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">پیسے ایڈ کریں</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="bg-black/50 gold-border px-4 py-2 rounded-full flex items-center gap-3">
+            <i class="fas fa-coins text-yellow-500"></i>
+            <span class="font-bold text-xl" id="main-balance">0.00</span>
+            <button class="bg-yellow-500 text-black rounded-full w-6 h-6 flex items-center justify-center font-bold">+</button>
         </div>
     </div>
 
-    <script>
-        function setDice(n) {
-            alert("اگلی باری پر " + n + " آئے گا! کنٹرول ایکٹیویٹ ہو گیا ہے۔");
-        }
-    </script>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        
+        <div class="game-card gold-border rounded-2xl p-6 relative overflow-hidden">
+            <div class="relative z-10">
+                <h3 class="text-2xl font-bold mb-2 header-title">1 vs 1 BATTLE</h3>
+                <p class="text-gray-300 text-sm">دو کھلاڑیوں کا مقابلہ - جیتنے والا سب لے جائے گا</p>
+                <button class="mt-6 bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-bold py-2 px-8 rounded-lg uppercase tracking-wider">Play Now</button>
+            </div>
+            <i class="fas fa-bolt absolute -right-4 -bottom-4 text-8xl text-white/5"></i>
+        </div>
+
+        <div class="game-card border border-blue-500/30 rounded-2xl p-6 relative overflow-hidden" style="box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);">
+            <div class="relative z-10">
+                <h3 class="text-2xl font-bold mb-2 text-blue-400 font-bold uppercase">Tournament</h3>
+                <p class="text-gray-300 text-sm">بڑے انعامات - آج ہی شامل ہوں</p>
+                <button class="mt-6 bg-blue-600 text-white font-bold py-2 px-8 rounded-lg uppercase tracking-wider">Join Room</button>
+            </div>
+            <i class="fas fa-trophy absolute -right-4 -bottom-4 text-8xl text-white/5"></i>
+        </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <div class="game-card rounded-xl p-4 border border-green-500/20">
+            <h4 class="text-green-400 font-bold mb-3"><i class="fas fa-wallet mr-2"></i> پیمنٹ میتھڈ</h4>
+            <p class="text-sm">JazzCash: <span class="text-white font-bold">Sidra Sahzadi</span></p>
+            <p class="text-lg font-mono text-yellow-500">03061424135</p>
+        </div>
+
+        <div class="game-card rounded-xl p-4 border border-purple-500/20 col-span-2">
+            <h4 class="text-purple-400 font-bold mb-3"><i class="fas fa-tasks mr-2"></i> روزانہ کے ٹاسک</h4>
+            <div class="flex justify-between items-center bg-white/5 p-2 rounded mb-2">
+                <span class="text-sm">5 گیمز جیتیں</span>
+                <span class="text-yellow-500 text-xs font-bold">+50 Coins</span>
+            </div>
+            <div class="flex justify-between items-center bg-white/5 p-2 rounded">
+                <span class="text-sm">ایک دوست کو جوائن کروائیں</span>
+                <span class="text-yellow-500 text-xs font-bold">+100 Coins</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-md border-t border-yellow-500/30 p-3 flex justify-around items-center">
+        <div class="flex flex-col items-center text-yellow-500">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-[10px] mt-1">ہوم</span>
+        </div>
+        <div class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-history text-xl"></i>
+            <span class="text-[10px] mt-1">ہسٹری</span>
+        </div>
+        <div class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-comment-dots text-xl"></i>
+            <span class="text-[10px] mt-1">چیٹ</span>
+        </div>
+        <div class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-cog text-xl"></i>
+            <span class="text-[10px] mt-1">سیٹنگز</span>
+        </div>
+    </div>
+
 </body>
 </html>

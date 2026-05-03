@@ -3,209 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Cash King - Professional 4D</title>
+    <title>Ludo Cash King - Ultra 4D Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* کارڈز کے گہرے رنگ */
-            --bg-online: #27ae60;
-            --bg-friends: #2980b9;
-            --bg-offline: #c0392b;
-            --bg-comp: #f39c12;
-            --bg-tourney: #8e44ad;
-            --gold-gradient: linear-gradient(180deg, #FFD700 0%, #B8860B 100%);
+            --glass: rgba(255, 255, 255, 0.1);
+            --gold: linear-gradient(45deg, #f39c12, #f1c40f, #f39c12);
         }
 
         body {
             margin: 0;
             padding: 0;
-            /* مکمل رنگین اور متحرک بیک گراؤنڈ */
-            background: linear-gradient(-45deg, #1a0b2e, #2d1b4d, #1e1e3f, #0f0f1a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            font-family: 'Poppins', sans-serif;
+            background: #000; /* بیس کلر کالا */
             color: white;
-            font-family: 'Arial', sans-serif;
             direction: rtl;
             height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            position: relative;
         }
 
-        @keyframes gradientBG {
+        /* رنگ برنگا اینیمیٹڈ بیک گراؤنڈ */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(125deg, #2c3e50, #000000, #2980b9, #000000, #8e44ad);
+            background-size: 400% 400%;
+            animation: aurora 10s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes aurora {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* شاہی ہیڈر اور تاج */
+        /* ہیڈر ڈیزائن */
         header {
+            padding: 30px 10px 10px;
             text-align: center;
-            padding: 20px 10px;
-            position: relative;
         }
 
-        .crown-container {
+        .crown-box {
             position: relative;
             display: inline-block;
         }
 
         .fa-crown {
-            font-size: 40px;
-            color: #FFD700;
-            filter: drop-shadow(0 0 15px gold);
+            font-size: 35px;
+            color: gold;
             position: absolute;
-            top: -35px;
+            top: -25px;
             left: 50%;
-            transform: translateX(-50%) rotate(-5deg);
-            animation: crownFloat 2s infinite alternate;
+            transform: translateX(-50%);
+            filter: drop-shadow(0 0 10px gold);
+            animation: shine 2s infinite;
         }
 
-        @keyframes crownFloat {
-            from { transform: translateX(-50%) translateY(0) rotate(-5deg); }
-            to { transform: translateX(-50%) translateY(-10px) rotate(5deg); }
+        @keyframes shine {
+            0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.7; transform: translateX(-50%) scale(1.1); }
         }
 
-        .main-logo {
-            background: var(--gold-gradient);
+        .title {
+            font-size: 28px;
+            font-weight: 900;
+            background: var(--gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 35px;
-            font-weight: 900;
-            margin-top: 10px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
-            letter-spacing: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* کارڈز کا گرڈ - چھوٹا اور پروفیشنل */
-        .dashboard-grid {
+        /* کارڈز گرڈ */
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* دو لائنوں میں چھوٹے ڈبے */
-            gap: 15px;
-            padding: 10px 20px;
-            flex-grow: 1;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 15px;
+            flex: 1;
         }
 
-        .game-card {
+        /* پروفیشنل چھوٹے کارڈز */
+        .pro-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px;
-            height: 130px; /* سائز چھوٹا کر دیا گیا */
+            height: 110px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
-            border: 2px solid rgba(255,255,255,0.2);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,0,0.3);
-            transition: 0.3s;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            position: relative;
         }
 
-        .game-card:active { transform: scale(0.95); }
-
-        /* انفرادی رنگ */
-        .online { background: var(--bg-online); }
-        .friends { background: var(--bg-friends); }
-        .offline { background: var(--bg-offline); }
-        .computer { background: var(--bg-comp); }
-        .tourney { background: var(--bg-tourney); grid-column: span 2; height: 100px; } /* ٹورنامنٹ بڑا کارڈ */
-
-        .card-icon {
-            font-size: 45px; /* بڑا لوگو */
-            color: white;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
-            margin-bottom: 5px;
+        .pro-card:hover {
+            transform: scale(1.05);
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        .card-text {
-            font-weight: bold;
-            font-size: 16px;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-        }
-
-        /* 4D گوٹی کا سایہ */
-        .small-pawn {
-            width: 25px;
-            height: 25px;
-            background: radial-gradient(circle at 30% 30%, #fff, transparent);
-            border-radius: 50%;
+        /* کارڈ کے اندر رنگ برنگے سائے (Glow) */
+        .pro-card::after {
+            content: '';
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            box-shadow: 5px 5px 10px rgba(0,0,0,0.6);
-            opacity: 0.7;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            filter: blur(30px);
+            z-index: -1;
+            opacity: 0.5;
         }
 
-        /* نیویگیشن بار */
-        .bottom-nav {
-            background: rgba(0,0,0,0.9);
+        .online::after { background: #00ff88; }
+        .friends::after { background: #00d2ff; }
+        .offline::after { background: #ff416c; }
+        .comp::after { background: #ffb347; }
+
+        .pro-icon {
+            font-size: 38px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .pro-label {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ٹورنامنٹ کارڈ (تھوڑا چوڑا) */
+        .tourney-wide {
+            grid-column: span 2;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(142,68,173,0.3), rgba(41,128,185,0.3));
+        }
+
+        /* پروفیشنل نیویگیشن */
+        .nav-bar {
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: space-around;
-            padding: 15px 0;
-            border-top: 2px solid gold;
-            border-radius: 20px 20px 0 0;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255,215,0,0.3);
+            backdrop-filter: blur(15px);
         }
 
-        .nav-item {
-            color: #bdc3c7;
+        .nav-link {
             text-align: center;
-            font-size: 20px;
+            color: #888;
+            font-size: 18px;
             transition: 0.3s;
         }
 
-        .nav-item.active { color: gold; transform: translateY(-5px); }
+        .nav-link.active {
+            color: gold;
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px gold;
+        }
 
+        .nav-label {
+            font-size: 10px;
+            display: block;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="crown-container">
+        <div class="crown-box">
             <i class="fas fa-crown"></i>
-            <div class="main-logo">LUDO CASH KING</div>
+            <div class="title">Ludo Cash King</div>
         </div>
     </header>
 
-    <div class="dashboard-grid">
-        <div class="game-card online">
-            <i class="fas fa-globe card-icon"></i>
-            <span class="card-text">آن لائن</span>
-            <div class="small-pawn"></div>
+    <div class="grid-container">
+        <div class="pro-card online">
+            <i class="fas fa-globe-americas pro-icon" style="color: #00ff88;"></i>
+            <span class="pro-label">آن لائن پلے</span>
         </div>
 
-        <div class="game-card friends">
-            <i class="fas fa-users card-icon"></i>
-            <span class="card-text">دوست</span>
-            <div class="small-pawn"></div>
+        <div class="pro-card friends">
+            <i class="fas fa-user-friends pro-icon" style="color: #00d2ff;"></i>
+            <span class="pro-label">دوستوں کا ٹیبل</span>
         </div>
 
-        <div class="game-card offline">
-            <i class="fas fa-couch card-icon"></i>
-            <span class="card-text">آف لائن</span>
-            <div class="small-pawn"></div>
+        <div class="pro-card offline">
+            <i class="fas fa-couch pro-icon" style="color: #ff416c;"></i>
+            <span class="pro-label">آف لائن</span>
         </div>
 
-        <div class="game-card computer">
-            <i class="fas fa-robot card-icon"></i>
-            <span class="card-text">کمپیوٹر</span>
-            <div class="small-pawn"></div>
+        <div class="pro-card comp">
+            <i class="fas fa-microchip pro-icon" style="color: #ffb347;"></i>
+            <span class="pro-label">کمپیوٹر</span>
         </div>
 
-        <div class="game-card tourney">
-            <i class="fas fa-trophy card-icon"></i>
-            <span class="card-text">بڑا ٹورنامنٹ</span>
+        <div class="pro-card tourney-wide">
+            <i class="fas fa-award pro-icon" style="color: gold;"></i>
+            <span class="pro-label">لکی ٹورنامنٹ</span>
         </div>
     </div>
 
-    <nav class="bottom-nav">
-        <div class="nav-item active"><i class="fas fa-home"></i><div style="font-size: 10px;">ہوم</div></div>
-        <div class="nav-item"><i class="fas fa-wallet"></i><div style="font-size: 10px;">والٹ</div></div>
-        <div class="nav-item"><i class="fas fa-history"></i><div style="font-size: 10px;">ہسٹری</div></div>
-        <div class="nav-item"><i class="fas fa-cog"></i><div style="font-size: 10px;">سیٹنگ</div></div>
+    <nav class="nav-bar">
+        <div class="nav-link active">
+            <i class="fas fa-th-large"></i>
+            <span class="nav-label">ہوم</span>
+        </div>
+        <div class="nav-link">
+            <i class="fas fa-wallet"></i>
+            <span class="nav-label">والٹ</span>
+        </div>
+        <div class="nav-link">
+            <i class="fas fa-chart-line"></i>
+            <span class="nav-label">ہسٹری</span>
+        </div>
+        <div class="nav-link">
+            <i class="fas fa-user-cog"></i>
+            <span class="nav-label">پروفائل</span>
+        </div>
     </nav>
 
     <script>
-        // ساؤنڈ پلے کرنے کا فنکشن (پہلے کلک پر)
+        // پروفیشنل ساؤنڈ اثر
         document.body.addEventListener('click', function() {
-            let audio = new Audio('https://www.soundjay.com/misc/sounds/magic-chime-01.mp3');
+            let audio = new Audio('https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3');
+            audio.volume = 0.3;
             audio.play();
         }, { once: true });
     </script>

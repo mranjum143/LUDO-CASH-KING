@@ -3,99 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Cash King | Admin Dashboard</title>
+    <title>Ludo Cash King | Master Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #050510; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; direction: rtl; }
-        .container { max-width: 900px; margin: auto; }
-        .header { text-align: center; padding: 20px; border-bottom: 2px solid #FFD700; margin-bottom: 30px; }
-        .header h1 { color: #FFD700; text-shadow: 2px 2px 4px #000; margin: 0; }
-        
-        .card { background: #121225; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .payment-card { border-right: 5px solid #00FF95; background: #1a2a23; }
-        
-        h3 { color: #00E5FF; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .info-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 18px; }
-        .val { color: #FFD700; font-weight: bold; }
-
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; text-align: center; border-bottom: 1px solid #222; }
-        th { background-color: #1a1a35; color: #00E5FF; }
-        
-        .btn { padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; margin: 2px; }
-        .btn-dice { background-color: #7B1FA2; color: white; }
-        .btn-dice:hover { background-color: #9C27B0; }
-        .btn-cash { background-color: #00FF95; color: #000; }
-        .btn-cash:hover { background-color: #00cc77; }
-        
-        .status-online { color: #00FF95; font-size: 12px; }
+        body { background: radial-gradient(circle, #1a1a3a 0%, #050510 100%); font-family: 'Segoe UI', sans-serif; color: white; }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; }
+        .gold-glow { box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); border: 1px solid #FFD700; }
+        .dice-btn { transition: transform 0.2s; }
+        .dice-btn:active { transform: scale(0.9); }
     </style>
 </head>
-<body>
+<body class="p-4 md:p-8">
 
-<div class="container">
-    <div class="header">
-        <h1>👑 LUDO CASH KING - ایڈمن پینل</h1>
-        <p>خوش آمدید! یہاں سے آپ پوری گیم کنٹرول کر سکتے ہیں۔</p>
-    </div>
-
-    <div class="card payment-card">
-        <h3>💰 پیمنٹ اکاؤنٹ کی تفصیلات (JazzCash)</h3>
-        <div class="info-row">
-            <span>اکاؤنٹ ہولڈر کا نام:</span>
-            <span class="val">Sidra Sahzadi</span>
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl md:text-6xl font-black text-yellow-400 mb-2 tracking-tighter">
+                <i class="fas fa-crown"></i> LUDO CASH KING
+            </h1>
+            <p class="text-blue-400 font-bold uppercase tracking-widest text-sm">ماسٹر کنٹرول پینل</p>
         </div>
-        <div class="info-row">
-            <span>جاز کیش نمبر:</span>
-            <span class="val">03061424135</span>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="glass-card gold-glow p-6 text-center">
+                <div class="bg-yellow-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-wallet text-2xl text-black"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">پیمنٹ سیٹنگز</h3>
+                <p class="text-gray-400 text-sm mb-4">JazzCash: Sidra Sahzadi</p>
+                <div class="text-2xl font-mono text-green-400">03061424135</div>
+            </div>
+
+            <div class="glass-card p-6 text-center border-blue-500 border">
+                <div class="text-blue-500 text-4xl mb-2"><i class="fas fa-users"></i></div>
+                <h3 class="text-lg">کل کھلاڑی</h3>
+                <div class="text-3xl font-bold">1,240</div>
+            </div>
+
+            <div class="glass-card p-6 text-center border-purple-500 border">
+                <div class="text-purple-500 text-4xl mb-2"><i class="fas fa-coins"></i></div>
+                <h3 class="text-lg">آج کی کمائی</h3>
+                <div class="text-3xl font-bold">RS 15,500</div>
+            </div>
         </div>
-        <p style="font-size: 14px; color: #ccc;">(نوٹ: یوزرز کو ایپ میں یہی نمبر نظر آئے گا جہاں وہ پیسے بھیجیں گے۔)</p>
+
+        <div class="glass-card mt-10 overflow-hidden">
+            <div class="bg-white/5 p-4 border-b border-white/10 flex justify-between items-center">
+                <h3 class="font-bold"><i class="fas fa-gamepad mr-2 text-yellow-400"></i> لائیو پلیئرز</h3>
+                <span class="bg-green-500 text-xs px-2 py-1 rounded-full animate-pulse">LIVE</span>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-right">
+                    <thead>
+                        <tr class="text-gray-400 text-sm uppercase">
+                            <th class="p-4">پلیئر</th>
+                            <th class="p-4">بیلنس</th>
+                            <th class="p-4 text-center">ڈائس کنٹرول</th>
+                            <th class="p-4 text-center">ایکشن</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t border-white/5 hover:bg-white/5">
+                            <td class="p-4">
+                                <div class="font-bold">Usman Ahmad</div>
+                                <div class="text-xs text-gray-500">+923270394662</div>
+                            </td>
+                            <td class="p-4 text-green-400 font-bold">RS 2,540</td>
+                            <td class="p-4">
+                                <div class="flex justify-center gap-2">
+                                    <button onclick="setDice(6)" class="dice-btn bg-purple-600 px-3 py-1 rounded-md text-xs font-bold hover:bg-purple-500">6 لائیں</button>
+                                    <button onclick="setDice(1)" class="dice-btn bg-red-600 px-3 py-1 rounded-md text-xs font-bold hover:bg-red-500">1 لائیں</button>
+                                </div>
+                            </td>
+                            <td class="p-4 text-center">
+                                <button class="bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">پیسے ایڈ کریں</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>👥 پلیئرز لسٹ اور گیم کنٹرول</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>پلیئر آئی ڈی</th>
-                    <th>نام / نمبر</th>
-                    <th>بیلنس (PKR)</th>
-                    <th>ڈائس کنٹرول</th>
-                    <th>ایکشن</th>
-                </tr>
-            </thead>
-            <tbody id="userTable">
-                <tr>
-                    <td>#1024</td>
-                    <td>Usman Ahmad <br><small>+923270394662</small></td>
-                    <td><span id="bal-1024">0</span></td>
-                    <td>
-                        <button class="btn btn-dice" onclick="setDice('1024', 6)">6 لائیں</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-cash" onclick="addMoney('1024')">پیسے ڈالیں</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<script>
-    // ڈائس کنٹرول کا فنکشن
-    function setDice(userId, num) {
-        alert("آئی ڈی " + userId + " کے لیے اگلی باری پر " + num + " سیٹ کر دیا گیا ہے!");
-        // یہاں آپ کا فائر بیس اپ ڈیٹ کوڈ آئے گا
-    }
-
-    // پیسے ایڈ کرنے کا فنکشن
-    function addMoney(userId) {
-        let amount = prompt("کتنے پیسے (PKR) ایڈ کرنے ہیں؟");
-        if (amount != null && amount != "") {
-            document.getElementById('bal-' + userId).innerText = amount;
-            alert("کامیابی! " + amount + " روپے ایڈ کر دیے گئے ہیں۔");
+    <script>
+        function setDice(n) {
+            alert("اگلی باری پر " + n + " آئے گا! کنٹرول ایکٹیویٹ ہو گیا ہے۔");
         }
-    }
-</script>
-
+    </script>
 </body>
 </html>
